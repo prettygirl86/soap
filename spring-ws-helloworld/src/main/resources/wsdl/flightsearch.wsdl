@@ -1,0 +1,128 @@
+<?xml version="1.0"?>
+<wsdl:definitions name="HelloWorld"
+  targetNamespace="http://codenotfound.com/services/flightsearch"
+  xmlns:tns="http://codenotfound.com/services/flightsearch" xmlns:types="http://codenotfound.com/types/flightsearch"
+  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://codenotfound.com/types/flightsearch"
+      xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+      attributeFormDefault="unqualified" version="1.0">
+
+      <!-- <xsd:element name="person">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="firstName" type="xsd:string" />
+            <xsd:element name="lastName" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+
+      <xsd:element name="greeting">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="greeting" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema> -->
+    
+    <xsd:element name="flight">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="source" type="xsd:string" />
+            <xsd:element name="destination" type="xsd:string" />
+            <xsd:element name="dteofjourney" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+
+      <xsd:element name="flightinfo">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="source" type="xsd:string" />
+            <xsd:element name="destination" type="xsd:string" />
+            <xsd:element name="dteofjourney" type="xsd:string"/>
+            <xsd:element name="flightname" type="xsd:string"/>
+            <xsd:element name="fare" type="xsd:double"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+
+  <!-- <wsdl:message name="SayHelloInput">
+    <wsdl:part name="person" element="types:person" />
+  </wsdl:message>
+
+  <wsdl:message name="SayHelloOutput">
+    <wsdl:part name="greeting" element="types:greeting" />
+  </wsdl:message> -->
+  
+  <wsdl:message name="GetFlightInput">
+    <wsdl:part name="flight" element="types:flight" />
+  </wsdl:message>
+
+  <wsdl:message name="GetFlightOutput">
+    <wsdl:part name="flightinfo" element="types:flightinfo" />
+  </wsdl:message>
+
+  <!-- <wsdl:portType name="HelloWorld_PortType">
+    <wsdl:operation name="sayHello">
+      <wsdl:input message="tns:SayHelloInput" />
+      <wsdl:output message="tns:SayHelloOutput" />
+    </wsdl:operation>
+  </wsdl:portType> -->
+  
+  <wsdl:portType name="FlightSearch_PortType">
+    <wsdl:operation name="getFlight">
+      <wsdl:input message="tns:GetFlightInput" />
+      <wsdl:output message="tns:GetFlightOutput" />
+    </wsdl:operation>
+  </wsdl:portType>
+
+  <!-- <wsdl:binding name="HelloWorld_SoapBinding" type="tns:HelloWorld_PortType">
+    <soap:binding style="document"
+      transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="sayHello">
+      <soap:operation
+        soapAction="http://codenotfound.com/services/helloworld/sayHello" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding> -->
+  
+  <wsdl:binding name="FlightSearch_SoapBinding" type="tns:FlightSearch_PortType">
+    <soap:binding style="document"
+      transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getFlight">
+      <soap:operation
+        soapAction="http://codenotfound.com/services/flightsearch/getFlight" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+
+ <!--  <wsdl:service name="HelloWorld_Service">
+    <wsdl:documentation>Hello World service</wsdl:documentation>
+    <wsdl:port name="HelloWorld_Port" binding="tns:HelloWorld_SoapBinding">
+      <soap:address location="http://localhost:9090/codenotfound/ws/helloworld" />
+    </wsdl:port>
+  </wsdl:service> -->
+  
+   <wsdl:service name="FlightSearch_Service">
+    <wsdl:documentation>Flight Search service</wsdl:documentation>
+    <wsdl:port name="FlightSearch_Port" binding="tns:FlightSearch_SoapBinding">
+      <soap:address location="http://localhost:9090/codenotfound/ws/flightsearch" />
+    </wsdl:port>
+  </wsdl:service>
+
+</wsdl:definitions>

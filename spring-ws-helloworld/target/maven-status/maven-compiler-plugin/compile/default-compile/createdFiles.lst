@@ -1,0 +1,9 @@
+com\codenotfound\types\flightsearch\Flightinfo.class
+com\codenotfound\types\flightsearch\ObjectFactory.class
+com\codenotfound\ws\endpoint\WebServiceConfig.class
+com\codenotfound\ws\client\HelloWorldClient.class
+com\codenotfound\ws\client\ClientConfig.class
+com\codenotfound\ws\SpringWsApplication.class
+com\codenotfound\types\flightsearch\package-info.class
+com\codenotfound\types\flightsearch\Flight.class
+com\codenotfound\ws\endpoint\HelloWorldEndpoint.class
